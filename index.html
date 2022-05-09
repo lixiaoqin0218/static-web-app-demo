@@ -8,8 +8,14 @@
 <body>
     <main>
         <h1>static web app</h1>
-        <p>loading message form api <b>...</b></p>
+        <p>loading message form api <b id="name">...</b></p>
     </main>
 </body>
+<script>
+    (async function () {
+        let { text } = await (await fetch(`/api/GetMessage`)).json();
+        document.querySelector('#name').textContent = text;
+    }())
+</script>
 
 </html>
